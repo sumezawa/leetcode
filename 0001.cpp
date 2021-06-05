@@ -7,8 +7,6 @@ class Solution {
 public:
     /* O(n) IMPLEMENTATION WITH HASH TABLE */
     std::vector<int> twoSum(std::vector<int>& nums, int& target) {
-        // C++ DYNAMIC ARRAY is not needed since we only need to return two integers
-        // std::vector<int> bruh; 
         // C++ RB-TREE = MAP
         // C++ HASH TABLE = UNORDERED MAP
         std::unordered_map<int, int> htable; // h_key = array's value, h_value = array's index
