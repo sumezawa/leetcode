@@ -1,2 +1,2 @@
-# leetcode is hard and i'd rather be playing piano or drawing than writing code
+# leetcode is hard
 My C++ Leetcode Solutions
