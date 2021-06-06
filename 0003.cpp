@@ -83,28 +83,28 @@ public:
 
 int main() {
     Solution s;
-    std::string a("abcabcbb");
+    std::string a("abcabcbb"); // yields abc
 
     std::cout << s.length_longest_substring(a) << std::endl;
     std::cout << s.longest_substring(a) << std::endl;
 
-    a = "pw";
+    a = "pw"; // yields pw (Leetcode wants 'w')
     std::cout << s.length_longest_substring(a) << std::endl;
     std::cout << s.longest_substring(a) << std::endl;
 
-    a = "pwwkew";
+    a = "pwwkew"; // yields wke
     std::cout << s.length_longest_substring(a) << std::endl;
     std::cout << s.longest_substring(a) << std::endl;
 
-    a = "bbbbb";
+    a = "bbbbb"; // yields b
     std::cout << s.length_longest_substring(a) << std::endl;
     std::cout << s.longest_substring(a) << std::endl;
 
-    a = "tmmzuxt";
+    a = "tmmzuxt"; // yields mzuxt
     std::cout << s.length_longest_substring(a) << std::endl;
     std::cout << s.longest_substring(a) << std::endl;
 
-    a = "testcode";
+    a = "testcode"; // yields estcod
     std::cout << s.length_longest_substring(a) << std::endl;
     std::cout << s.longest_substring(a) << std::endl;
 
