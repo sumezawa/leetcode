@@ -1,4 +1,4 @@
-# programming is not for everyone and every day i doubt it is for me
+# average programmer's leetcode solutions
 My C++ Leetcode Solutions
 
 something from reddit:\
