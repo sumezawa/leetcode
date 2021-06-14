@@ -4,8 +4,7 @@
 class Solution {
     /* Some principles I abided by for this solution:
      * 1) don't use 64-bit data types (therefore no long, long long, uint64_t)
-     * 2) don't return 64-bit data types
-     */
+     * 2) don't return 64-bit data types */
     
     public:
         const std::string neg_limit = "2147483648";
