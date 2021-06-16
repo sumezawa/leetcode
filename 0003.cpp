@@ -21,64 +21,64 @@
 #include <unordered_map>
 
 class Solution {
-public:
-    const uint16_t& get_max(const uint16_t& n1, const uint16_t& n2) {
-        if (n1 >= n2) {
-            return n1;
-        }
-        else {
-            return n2;
-        }
-    }
+    public:
+        std::string longest_substring(std::string s) {
+            uint16_t window_begin = 0; // internal substring start index
+            uint16_t window_length = 0; // internal window length
 
-    int length_longest_substring(std::string s) {
-        // SPECIAL CASES
-        if ((s.size() == 0) || (s.size() == 1)) {
-            return s.size();
-        }
+            uint16_t substring_begin = 0; // return value substring start index
+            uint16_t substring_length = 0; // return value substring length
 
-        // NORMAL CASES
-        return longest_substring(s).size();
-    }
+            std::string temp;
 
-    std::string longest_substring(std::string s) {
-        uint16_t window_begin = 0; // internal substring start index
-        uint16_t window_length = 0; // internal window length
+            std::unordered_map<char, uint16_t> htable; // key = character, value = location in string (index in string)
 
-        uint16_t substring_begin = 0; // return value substring start index
-        uint16_t substring_length = 0; // return value substring length
+            // if we find the starting index and length of the longest substring, we can obtain that substring
+            // a given constraint is string length is up to 5 * 10^4, which is larger than what int supports
+            for (uint16_t window_end = 0; window_end < s.size(); ++window_end) {
+                if (htable.find(s[window_end]) != htable.end()) { // if character is not unique
+                    window_begin = get_max(window_begin, htable[s[window_end]] + 1); // move window to new starting position
+                }
+                else { // if character is unique
+                    // do not move window, ending character is unique
+                    window_length = get_max(window_length, window_end - window_begin + 1); // expand window
+                    if (window_length > substring_length) { // if the substring covered by the new window is larger than current largest substring
+                        substring_begin = window_begin; // new largest substring is the substring covered by the window
+                        substring_length = window_length;
 
-        std::string temp;
-
-        std::unordered_map<char, uint16_t> htable; // key = character, value = location in string (index in string)
-
-        // if we find the starting index and length of the longest substring, we can obtain that substring
-        // a given constraint is string length is up to 5 * 10^4, which is larger than what int supports
-        for (uint16_t window_end = 0; window_end < s.size(); ++window_end) {
-            if (htable.find(s[window_end]) != htable.end()) { // if character is not unique
-                window_begin = get_max(window_begin, htable[s[window_end]] + 1); // move window to new starting position
-            }
-            else { // character is unique
-                // do not move window, ending character is unique
-                window_length = get_max(window_length, window_end - window_begin + 1); // expand window
-                if (window_length > substring_length) { // if the substring covered by the new window is larger than current largest substring
-                    substring_begin = window_begin; // new largest substring is the substring covered by the window
-                    substring_length = window_length;
-
-                    temp = s.substr(substring_begin, substring_length);
-                    for (std::unordered_map<char, uint16_t>::iterator it = htable.begin(); it != htable.end(); ++it) {
-                        if (temp.find(it->first) == std::string::npos) {
-                            htable.erase(it->first); // eliminate hash entries that are not characters of the new substring
+                        temp = s.substr(substring_begin, substring_length);
+                        for (std::unordered_map<char, uint16_t>::iterator it = htable.begin(); it != htable.end(); ++it) {
+                            if (temp.find(it->first) == std::string::npos) {
+                                htable.erase(it->first); // eliminate hash entries that are not characters of the new substring
+                            }
                         }
                     }
                 }
+
+                htable[s[window_end]] = window_end; // update latest instance of the character traversed
             }
-            // update latest instance of the character traversed
-            htable[s[window_end]] = window_end;
+
+            return s.substr(substring_begin, substring_length);
         }
 
-        return s.substr(substring_begin, substring_length);
-    }
+        const uint16_t& get_max(const uint16_t& n1, const uint16_t& n2) {
+            if (n1 >= n2) {
+                return n1;
+            }
+            else {
+                return n2;
+            }
+        }
+
+        int length_longest_substring(std::string s) {
+            // SPECIAL CASES
+            if ((s.size() == 0) || (s.size() == 1)) {
+                return s.size();
+            }
+
+            // NORMAL CASES
+            return longest_substring(s).size();
+        }
 };
 
 int main() {
