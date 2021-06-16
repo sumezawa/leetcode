@@ -1,3 +1,5 @@
+/* CASE 7: REVERSE INTEGER DIGITS */
+
 #include <utility> // swap()
 #include <string> // to_string(), .front(), .substr(), npos, stoi()
 
@@ -11,7 +13,6 @@ class Solution {
         const std::string pos_limit = "2147483647";
     
         int reverse(int x) {
-
             std::string x_str = std::to_string(x);
             if (x_str.front() == '-') { // omit the sign for now
                 x_str = x_str.substr(1,std::string::npos);
@@ -36,7 +37,7 @@ class Solution {
 
         }
         
-        /* Compares two string encodings of integers (not lexicographical) */
+        /* returns larger (of two string encodings) of integers (not lexicographical) */
         bool x_larger(const std::string& x_str, const std::string& limit) {
             if (x_str.length() < limit.length()) {
                 return false;
