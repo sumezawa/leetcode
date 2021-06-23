@@ -22,10 +22,12 @@ class Solution {
             nodes.pop();
             TreeNode* n2 = nodes.front();
             nodes.pop();
-            if (!n1 && !n2) {
+            if (n1 == nullptr && n2 == nullptr) {
                 continue; // continue to next iteration (skip current)
             }
-            else if ((!n1 && n2) || (n1 && !n2) || (n1 && n2 && (n1->val != n2->val))) {
+            else if ((n1 == nullptr && n2 != nullptr) || 
+                     (n1 != nullptr && n2 == nullptr) || 
+                     (n1 != nullptr && n2 != nullptr && (n1->val != n2->val))) {
                 return false;
             }
             else { // check next subtrees
@@ -44,10 +46,11 @@ class Solution {
     }
     
     bool symmetric_helper(TreeNode* n1, TreeNode* n2) {
-        if (!n1 && !n2) {
+        if (n1 == nullptr && n2 == nullptr) {
             return true;
         }
-        if ((!n1 && n2) || (n1 && !n2)) {
+        if ((n1 == nullptr && n2 != nullptr) || 
+            (n1 != nullptr && n2 == nullptr)) {
             return false;
         }
         
