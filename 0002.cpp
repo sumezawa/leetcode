@@ -19,18 +19,18 @@ public:
         int digit;
         
         // SPECIAL CASES (TO SPEED UP CODE)
-        if (!l1 && !l2) {
+        if (l1 == nullptr && l2 == nullptr) {
             return nullptr;
         }
-        else if (l1 && !l2) {
+        else if (l1 != nullptr && l2 == nullptr) {
             return l1;
         }
-        else if (!l1 && l2) {
+        else if (l1 == nullptr && l2 != nullptr) {
             return l2;
         }
         
         // NORMAL CASES
-        while (l1 || l2 || carry) { // expands the list, until l1, l2, and carry are all 0/nullptr
+        while (l1 != nullptr || l2 != nullptr || carry) { // expands the list, until l1, l2, and carry are all 0/nullptr
             digit = 0;
             if (carry) {
                 ++digit;
