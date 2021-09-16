@@ -1,4 +1,4 @@
-/* CASE 2: ADDING DIGITS IN LINKED-LISTS */
+/* CASE 2: ADDING DIGITS IN LINKED LISTS */
 
 // Definition for singly-linked list
 struct ListNode {
