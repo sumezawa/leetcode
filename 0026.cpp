@@ -1,5 +1,7 @@
 /* CASE 26: REMOVE DUPLICATES, SORTED ARRAY */
 
+#include <vector>
+
 class Solution {
 public:
     int removeDuplicates(std::vector<int>& nums) {
