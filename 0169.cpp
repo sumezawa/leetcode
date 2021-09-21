@@ -2,7 +2,7 @@
 // O(n) Time, O(1) Space
 
 #include <vector>
-
+// checking every element or 'vote' is O(n)
 
 class Solution {
 public:
