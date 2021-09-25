@@ -1,5 +1,6 @@
 /* CASE 9: PALINDROME INTEGERS */
 
+#include <stdint.h>
 #include <string>
 #include <utility> // swap()
 
