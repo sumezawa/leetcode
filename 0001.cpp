@@ -15,8 +15,9 @@ class Solution {
 public:
     /* O(n) IMPLEMENTATION WITH HASH TABLE */
     std::vector<int> twoSum(std::vector<int>& nums, int& target) {
-        // C++ RB-TREE = MAP
-        // C++ HASH TABLE = UNORDERED MAP
+        // C++ RB-TREE = MAP (ordered key and value)
+        // C++ HASH TABLE = UNORDERED MAP (unordered key and value)
+        // C++ LOOKUP TABLE = UNORDERED SET (presence or absence)
         std::unordered_map<int, int> htable; // h_key = array's value, h_value = array's index
         for (size_t num_index = 0; num_index < nums.size(); ++num_index) {
             // we try to find whether a complement of some array value exists in the array
