@@ -1,6 +1,8 @@
 /* CASE 1880: SUM OF DECIMAL NUMBERS ENCODED IN CHARS */
 
+#include <stdint.h>
 #include <string>
+
 
 class Solution {
 public:
