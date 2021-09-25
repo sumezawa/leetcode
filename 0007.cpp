@@ -1,5 +1,6 @@
 /* CASE 7: REVERSE INTEGER DIGITS */
 
+#include <stdint.h>
 #include <utility> // swap()
 #include <string> // to_string(), .front(), .substr(), npos, stoi()
 
