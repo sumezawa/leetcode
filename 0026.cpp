@@ -5,12 +5,14 @@
 
 class Solution {
 public:
+    // this function modifies the array itself (pass-by-reference)
+    // this function returns the size of the new array
     int removeDuplicates(std::vector<int>& nums) {
-        // modify the array itself for pass-by-reference
         // SPECIAL CASE (empty array)
         if (nums.size() < 1) {
             return 0;
         }
+        // STANDARD CASE
         else { 
             size_t pointer = 1;
             for (size_t i = 1; i < nums.size(); ++i) {
