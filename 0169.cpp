@@ -1,6 +1,7 @@
 /* CASE 169: MAJORITY ELEMENT IN ARRAY */
 // O(n) Time, O(1) Space
 
+#include <stdint.h>
 #include <vector>
 // checking every element or 'vote' is O(n)
 
@@ -12,8 +13,7 @@ public:
         
         // O(1) is possible because majority element
         // will appear more than half the time
-        // so probabilistically we will get a candidate
-        // that dominates in counts
+        // we will get a candidate that dominates in counts
         for (uint16_t i = 1; i < nums.size(); ++i) {
             if (nums[i] == max) {
                 ++count;
