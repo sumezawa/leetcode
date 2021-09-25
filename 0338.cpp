@@ -2,10 +2,10 @@
 
 #include <vector>
 
+
 class Solution {
 public:
     std::vector<int> countBits(int n) {
-        
         std::vector<int> ans(n + 1);
         
         // there's actually a pattern involved in counting the number of 1's in a binary representation
@@ -39,6 +39,5 @@ public:
         }
 
         return ans;
-        
     }
 };
