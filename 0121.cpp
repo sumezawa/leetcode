@@ -1,5 +1,6 @@
 /* CASE 121: MAX ELEMENT DIFFERENCE */
-// O(n) Time, O(1) Space
+// O(n) Time, O(1) Space, 
+// Inspired by Kadane's Algorithm for Maximum Subarray
 
 #include <stdint.h>
 #include <vector>
