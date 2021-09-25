@@ -1,5 +1,6 @@
 /* CASE 101: Symmetric Tree */
 
+#include <stdint.h>
 #include <queue> // iterative check
 
 class Solution {
