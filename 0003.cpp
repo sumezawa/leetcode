@@ -15,7 +15,7 @@
  * no greater than 65536
  */
 
-
+#include <stdint.h>
 #include <iostream>
 #include <string>
 #include <unordered_map>
@@ -81,6 +81,7 @@ class Solution {
         }
 };
 
+// TEST CODE
 int main() {
     Solution s;
     std::string a("abcabcbb"); // yields abc
