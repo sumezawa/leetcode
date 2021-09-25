@@ -1,6 +1,8 @@
 /* CASE 344: REVERSE CHAR ARRAY O(1) SPACE */
 
-#include <algorithm>
+#include <stdint.h>
+// #include <algorithm> // deprecated post-C++11
+#include <utility> // contains std::swap() starting from C++11
 // commented out version is still O(1), but it expends a byte more
 
 class Solution {
