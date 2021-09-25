@@ -1,5 +1,6 @@
-/* CASE 6: Zig-Zag Strings */
+/* CASE 6: ZIG-ZAG STRINGS */
 
+#include <stdint.h>
 #include <iterator> // std::distance
 #include <string>
 
@@ -12,7 +13,7 @@ public:
             return s;
         }
         
-        // NORMAL CASES:
+        // STANDARD CASES:
         // Consider the following pattern:
         // 5 rows = 3 mid, rev = 8
         // 4 rows = 2 mid, rev = 6
