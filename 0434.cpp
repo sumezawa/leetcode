@@ -9,7 +9,7 @@ public:
     int countSegments(std::string s) {
         int counts = 0;
         bool newword = false;
-        auto it = s.begin();
+        std::string::iterator it = s.begin(); // use auto next time
         while (it != s.end()) {
             if (!newword && *it != ' ') {
                 newword = true;
