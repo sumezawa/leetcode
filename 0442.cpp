@@ -8,6 +8,10 @@
 
 class Solution {
 public:
+    
+    // This solution works for abstract data types other than
+    // integers; but if it were just integers (and there were
+    // additional conditions, there are better algorithms
     std::vector<int> findDuplicates2(std::vector<int>& nums) {
         
         // Average O(1) Space
