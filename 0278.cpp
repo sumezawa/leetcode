@@ -1,7 +1,8 @@
 /* CASE 278: BINARY SEARCH */
 
-// The API isBadVersion is defined for you.
+// The API isBadVersion is defined by LeetCode
 // bool isBadVersion(int version);
+// array is sorted, composed of good elements, then bad elements
 
 // find the first 'bad' element in a sorted array
 class Solution {
