@@ -6,7 +6,6 @@
 class Solution {
 public:
     bool isToeplitzMatrix(vector<vector<int>>& matrix) {
-        
         // compare the top left element (if it exists)
         size_t rmax = matrix.size();
         size_t cmax = matrix[0].size();
@@ -18,6 +17,5 @@ public:
             }
         }
         return true; // every element is valid, matrix is Toeplitz
-        
     }
 };
