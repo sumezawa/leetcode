@@ -6,12 +6,12 @@
 class Solution {
 public:
     bool canConstruct(std::string ransomNote, std::string magazine) {
-        // SPECIAL CASES
+        // SPECIAL CASE
         if (ransomNote.size() > magazine.size()) {
             return false;
         }
         
-        // STANDARD CASES
+        // STANDARD CASE
         std::unordered_map<char, int> letter_bank;
         std::string::iterator it = magazine.begin();
         while (it != magazine.end()) {
