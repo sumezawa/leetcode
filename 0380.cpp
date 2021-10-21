@@ -1,22 +1,20 @@
 /* CASE 380: RANDOMISED SET CLASS */
 
 #include <stdlib.h> // rand()
-#include <unordered_set>
-#include <vector>
+#include <unordered_set> // store keys, indices of values
+#include <vector> // store values
 
 class RandomizedSet {
 public:
     
-    std::unordered_map<int, int> htable; // key holds vector index
+    std::unordered_map<int, unsigned int> htable; // key holds vector index
     std::vector<int> values;
     
     RandomizedSet() {
         // BLANK for now
     }
     
-    // note, htable.find(), htable[insertion], htable.erase() are all O(1)
-    
-    bool insert(int val) {
+    bool insert(int val) { // O(1) time, O(1) space
         if (htable.find(val) == htable.end()) {
             values.push_back(val); // push back is O(1)
             htable[val] = values.size() - 1; // store index of vector at this state
@@ -26,7 +24,7 @@ public:
         
     }
     
-    bool remove(int val) { // tricky part
+    bool remove(int val) { // O(1) space, there's a trick to do this in O(1) time
         if (htable.find(val) != htable.end()) {
             values[htable[val]] = values.back(); // find (htable find, O(1)), copy back (vector access, O(1)) there, eliminate val from vector
             values.pop_back(); // remove duplicate (vector pop back, O(1); generic remove is not O(1), so this is important)
@@ -37,7 +35,7 @@ public:
         return false;
     }
     
-    int getRandom() {
+    int getRandom() { // O(1) time, O(1) space
         return values[rand() % values.size()];
         // rand() is an integer from 0 to at least 2^15 - 1
         // we can't use an iterator (types are different)
