@@ -1,10 +1,11 @@
-/* CASE 121: MAX ELEMENT DIFFERENCE */
-// O(n) Time, O(1) Space, 
+/* CASE 121: MINIMUM PURCHASE MAXIMUM SALE */
+// O(n) Time, O(1) Space
 // Inspired by Kadane's Algorithm for Maximum Subarray
 
 #include <stdint.h>
 #include <vector>
 
+// STOCKS I: ONE-TIME PURCHASE, ONE-TIME SALE, MAXIMISE PROFIT
 
 class Solution {
 public:
