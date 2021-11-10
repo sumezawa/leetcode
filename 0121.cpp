@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <vector>
 
-// STOCKS I: ONE-TIME PURCHASE, ONE-TIME SALE, MAXIMISE PROFIT
+// STOCKS I: ONE-STOCK, ONE-TIME PURCHASE, ONE-TIME SALE, MAXIMISE PROFIT
 
 class Solution {
 public:
