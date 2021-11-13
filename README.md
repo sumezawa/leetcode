@@ -3,9 +3,9 @@ My C++ Leetcode Solutions
 
 
 As of 13 November 2021, 
-- <span style="color:green"> Easy: <em>49</em> </span> of 524
-- <span style="color:yellow"> Medium: <em>11</em> </span> of 1103
-- <span style="color:red"> Hard: <em>1</em> </span> of 440
+- Easy: 49 of 524
+- Medium: 11 of 1103
+- Hard: 1 of 440
 have been completed and archived here.
 
 
