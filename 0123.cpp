@@ -1,3 +1,43 @@
+/* CASE 123: TWO-TIME TRANSACTION MAXIMISE PROFITS */
+// O(n) Time, O(1) Space
+
+// STOCKS III: ONE-STOCK, 2 TRANSACTIONS, MAXIMISE PROFIT
+// this code depends on a recurrence relation that have t (< unlimited) transactions
+
+#include <vector>
+
+class Solution {
+public:
+    int maxProfit(std::vector<int>& prices) {
+        int p_2s = 0;           // max profit, second stock sold
+        int p_2p = -2147483648; // max profit, second stock purchased
+        int p_1s = 0;           // max profit, first stock sold 
+        int p_1p = -2147483648; // max profit, first stock purchased
+        
+        for (std::vector<int>::iterator price = prices.begin(); price != prices.end(); ++price) {
+            p_2s = maximum(p_2s, p_2p + *price);
+            p_2p = maximum(p_2p, p_1s - *price);
+            p_1s = maximum(p_1s, p_1p + *price);
+            p_1p = maximum(p_1p, 0 - *price);
+            
+            // notice: we don't have indices to indicate today's or yesterday's cost.
+            // HOWEVER
+            // we do use the 'old' values of p_2p, p_1s, p_1p to yield the best p_2s so far.
+        }
+        
+        return p_2s;
+    }
+    
+    // helper function
+    int maximum(int a, int b) {
+        if (a > b) {
+            return a;
+        }
+        else {
+            return b;
+        }
+    }
+};
 
 /* Some tips to understand this code:
     - first, notice that this is a dynamic programming problem:
@@ -27,11 +67,11 @@
       three variables, t # of transactions, s # of stocks held, and n the days elapsed.
       
       To characterise today's maximum profit with respect to yesterday, we get:
-          - P[t,0,n] = max(P[t,0,n - 1], P[t,1,n - 1] + prices[i])
+          - P[t,0,n] = max(P[t,0,n - 1], P[t,1,n - 1] + prices[n])
       which models the fact that today's profit, given t transactions remaining, no stocks in hand,
       is either yesterday's profits with t transactions remaining, no stocks in hand (do nothing) or
       yesterday's profits with t transactions remaining, one stock in hand plus today's price (sale).
-          - P[t,1,n] = max(P[t,1,n-1], P[t - 1,0,n-1] - prices[i])
+          - P[t,1,n] = max(P[t,1,n-1], P[t - 1,0,n-1] - prices[n])
       which models the fact that today's profit, given t transactions remaining, one stock in hand,
       is either yesterday's profit with t transactions remaining, one stock in hand (do nothing) or
       yesterday's profits with t - 1 transactions remaining, no stock in hand plus today's price (purchase). 
@@ -51,7 +91,40 @@
            
          - For any day after using up your last transaction (t = 0), there is no transaction nor sale, so 
            there is no profit nor loss. Therefore P[0,0,n >= 0] = 0.
-
-    - fourth, recurrence relations based on yesterday's profits must be 
-
+    
+    JUSTIFICATION FOR CORRECTNESS OF THE RECURRENCE RELATIONS:
+    
+    - fourth, if only one transaction is allowed:
+      - P[1,0,n] = max(P[1,0,n-1], P[1,1,n - 1] + prices[n]) yesterday no change vs. yesterday + today's price
+      - P[1,1,n] = max(P[1,1,n-1], P[0, 0, n - 1] - prices[n]) yesterday no change vs. - today's price
+      Notice, P[0,0,n-1] is a base case, 0, for any n, so really the relation is:
+      - P[1,0,n] = max(P[1,0,n-1], P[1,1,n - 1] + prices[n])
+      - P[1,1,n] = max(P[1,1,n-1], 0 - prices[n])
+      If n = 0, then
+      - P[1,0,0] = max(P[1,0,-1], P[1,1,-1] + prices[0]) = max(0, -infinity + prices[0]) = 0
+      - P[1,1,0] = max(P[1,1,-1], 0 - prices[0]) = max(-infinity, - prices[0]) = -prices[0]
+      for n = 1,
+      - P[1,0,1] = max(P[1,0,0], P[1,1,0] + prices[0]) = max(0, -prices[0] + prices[1])
+      - P[1,1,1] = max(P[1,1,0], 0 - prices[1]) = max(-prices[0], -prices[1])
+      
+      Although this is a hand-wavy explanation, it is now (a little bit more) obvious that
+      the upper relation takes the minimum price from the lower relation and evaluates 
+      whether the profit yielded is greater than the profit of not doing anything.
+      
+      Suppose price[0] < price[1] (-price[0] > -price[1]).
+      - P[1,0,1] = prices[1] - prices[0], P[1,1,1] = -prices[0]. 
+      
+    - fifth, although we can't actually do any more transactions, we can retroactively nullify previous
+      transactions for a higher-profit transaction later on. This 'replacement' of transactions
+      will reverberate for higher order examples (more than one transaction allowed):
+      - P[2,0,n] = max(P[2,0,n-1], P[2,1,n-1] + prices[n])
+      - P[2,1,n] = max(P[2,1,n-1], P[1,0,n-1] - prices[n])
+      - P[1,0,n] = max(P[1,0,n-1], P[1,1,n-1] + prices[n])
+      - P[1,1,n] = max(P[1,1,n-1], 0 - prices[n])
+      
+      Notice for the second relation, max profit partially depends on one stock purchased when
+      there is no stock in hand minus today's price. This maximum goes up only when the lower
+      relations P[1,1,n], P[1,0,n] increase in value. Over time, the maximum peaks encountered
+      are absorbed by the lower relations, and the upper relations with more stocks sold will
+      remember the most profitable transactions when calculating its own maximum profit.
 */      
