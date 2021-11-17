@@ -1,14 +1,15 @@
 /* CASE 46: ARRAY ELEMENT PERMUTATIONS, DISTINCT ELEMENTS */
-
 // enumerating all possible solutions = backtracking
 // permutations require us to consider every single solution
+// O(n!) Time, O(n) Space
 
-// #include <unordered_map> 
+##include <chrono>
+#include <iostream>
+
+// #include <unordered_map>
 // permutations contain too little elements to yield asymptotic O(1) behaviour
 // it is wasted space (compared to a bool array)
-
 #include <vector>
-
 
 class Solution {
 public:
@@ -17,7 +18,8 @@ public:
     // -10 <= nums[i] <= 10
     // all elements are distinct
     
-    // 0 ms, 7.5MB, Bool Array
+    // Leetcode: 0 ms, 7.5MB, Bool Array
+    // My test: 23s
     
     std::vector<std::vector<int>> permute(std::vector<int>& nums) {
         std::vector<std::vector<int>> set;
@@ -33,6 +35,11 @@ public:
         // BASE CASE (permutation creation completed)
         if (p_length == nums.size()) {
             set.push_back(p);
+            std::cout << "[";
+            for (size_t i = 0; i < p.size(); ++i) {
+                std::cout << p[i];
+            }
+            std::cout << "]" << std::endl;
             return;
         }
         
@@ -51,7 +58,8 @@ public:
         return;
     }
 
-    // 8 ms, 8.6 MB, Hash Tables
+    // Leetcode: 8 ms, 8.6 MB, Hash Tables
+    // My test: 37s
     
     std::vector<std::vector<int>> slow_permute(std::vector<int>& nums) {
         std::vector<std::vector<int>> p;
@@ -67,6 +75,11 @@ public:
         // BASE CASE (permutation creation completed)
         if (htable.size() == nums.size()) {
             set.push_back(subset);
+            std::cout << "[";
+            for (size_t i = 0; i < subset.size(); ++i) {
+                std::cout << subset[i];
+            }
+            std::cout << "]" << std::endl;
             return;
         }
         
@@ -85,6 +98,32 @@ public:
         return;
     }
 };
+
+int main() {
+
+    std::vector<int> test2{5,3,2,4,1};
+    std::vector<int> test1{1,3,2,5};
+    std::vector<int> test3{1,14,5,9,23,4,2,7,13,12};
+
+    Solution s;
+    auto start = std::chrono::high_resolution_clock::now();
+    std::vector<std::vector<int>> a = s.slow_permute(test2);
+    std::vector<std::vector<int>> b = s.slow_permute(test1);
+    std::vector<std::vector<int>> d = s.slow_permute(test3);
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration1 = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+
+    start = std::chrono::high_resolution_clock::now();
+    std::vector<std::vector<int>> e = s.permute(test2);
+    std::vector<std::vector<int>> f = s.permute(test1);
+    std::vector<std::vector<int>> g = s.permute(test3);
+    stop = std::chrono::high_resolution_clock::now();
+    auto duration2 = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+    std::cout << duration1.count() << std::endl;
+    std::cout << duration2.count() << std::endl;
+
+    return 0;
+}
 
 // A little visualisation
 // suppose nums = [1,2,3]
