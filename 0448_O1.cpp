@@ -3,6 +3,7 @@
 // O(n) Time, O(1) Space Version
 // works for integers, doubles, basically anything with negatives
 
+#include <cmath>
 #include <vector>
 
 class Solution {
@@ -19,21 +20,19 @@ public:
         // for duplicate elements, we do not apply this marker twice (that would undo the marker).
         // any index that does not contain a negative is 'missing' from the sequence.
         
-        for (size_t i = 0; i < nums.size(); ++i) {
-            if (nums[i] > 0) {
-                if (nums[nums[i] - 1] > 0) { // check duplicate
-                    nums[nums[i] - 1] *= -1; // take into consideration zero indices
-                }
-            }
-            else {
-                if (nums[(nums[i] * -1) - 1] > 0) { // check duplicate
-                    nums[(nums[i] * -1) - 1] *= -1;    
-                }
+        unsigned short count = 0;
+        unsigned short size = nums.size();
+        
+        for (int i = 0; i < size; ++i) {
+            if (nums[std::abs(nums[i]) - 1] > 0) { // check duplicate
+                nums[std::abs(nums[i]) - 1] *= -1; // take into consideration zero indices
+                ++count;
             }
         }
         
         std::vector<int> missing;
-        for (size_t i = 0; i < nums.size(); ++i) {
+        missing.reserve(size - count);
+        for (int i = 0; i < size; ++i) {
             if (nums[i] > 0) {
                 missing.push_back(i + 1); // missing numbers are the indices, not the elements
             }
