@@ -2,8 +2,8 @@
 My C++ Leetcode Solutions
 
 
-As of 16 November 2021, 
-- Easy: 51 of 527
+As of 23 November 2021, 
+- Easy: 55 of 527
 - Medium: 12 of 1107
 - Hard: 1 of 442
 
