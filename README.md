@@ -2,10 +2,10 @@
 My C++ Leetcode Solutions
 
 
-As of 9 December 2021, 
-- Easy: 56 of 532
-- Medium: 13 of 1115
-- Hard: 1 of 446
+As of 31 December 2021, 
+- Easy: 61 of 537
+- Medium: 17 of 1133
+- Hard: 1 of 453
 
 
 have been completed and archived here. I have more accepted code on LeetCode than on this repository, but I don't post submissions on GitHub unless I have understood every line of code in the problem at some point.
@@ -25,4 +25,4 @@ For example, in LeetCode Problem 0047, Permutations of Non-Unique Elements, I am
             p.pop_back();
         }
 
-You are welcome to adapt or copy my code; if you do, please reference the .cpp file and the repository.
+You are welcome to adapt or copy my code. If you do, please reference the .cpp file and the repository.
