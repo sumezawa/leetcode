@@ -10,6 +10,7 @@
 // permutations contain too little elements to yield asymptotic O(1) behaviour
 // it is wasted space (compared to a bool array)
 
+#include <cstdlib>
 #include <vector>
 
 class Solution {
