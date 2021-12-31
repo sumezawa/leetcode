@@ -20,27 +20,19 @@ public:
     // all elements are distinct
     
     // Leetcode: 0 ms, 7.5MB, Bool Array
-    // My test: 23s
-    
     std::vector<std::vector<int>> permute(std::vector<int>& nums) {
         std::vector<std::vector<int>> set;
         std::vector<bool> used(nums.size(), false);
         std::vector<int> p;
-        backtrack(set, used, 0, p, nums);
+        backtrack(set, used, p, nums);
         return set;
     }
     
-    void backtrack(std::vector<std::vector<int>>& set,
-                   std::vector<bool>& used, size_t p_length,
+    void backtrack(std::vector<std::vector<int>>& set, std::vector<bool>& used, 
                    std::vector<int>& p, std::vector<int>& nums) {
         // BASE CASE (permutation creation completed)
-        if (p_length == nums.size()) {
+        if (p.size() == nums.size()) {
             set.push_back(p);
-            std::cout << "[";
-            for (size_t i = 0; i < p.size(); ++i) {
-                std::cout << p[i];
-            }
-            std::cout << "]" << std::endl;
             return;
         }
         
@@ -51,7 +43,7 @@ public:
             }
             used[i] = true;
             p.push_back(nums[i]);
-            backtrack(set, used, p_length + 1, p, nums);
+            backtrack(set, used, p, nums);
             used[i] = false;
             p.pop_back();
         }
