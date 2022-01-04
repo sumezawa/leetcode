@@ -50,6 +50,12 @@ public:
 
 /* TIPS
 1. A BST obeys the rule that the left subtrees are less than itself, right subtrees are greater than itself
-2. This is a Dynamic Programming problem, such that we need to know what node values were used before.
-3. Each node has a unique value.
+2. Each node has a unique value.
+3. We use the Multiplication Principle (MATH 116, Combinatorics) ... 
+   if we chose 1 as a root, and there is only one node, then this is it.
+   if we chose 1 as a root, and there are two nodes, we have only one other choice left for 2
+   (same situation if we swap 2 and 1 above)
+   if we chose 1 as a root, and there are three nodes, we have two choices of 3 or 2, 
+   and if we were to isolate that case of 3 or 2, this is analogous to the 1 or 2 situation ...
+3DP. This is a DP problem such that we can solve bigger n cases via taking old products from before and taking the sum
 */
