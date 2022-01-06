@@ -31,6 +31,7 @@ public:
         }
         
         return static_cast<int>(max);
+        // if we want, we can reconstruct the subsequence array as well, with backtracking
         
     }
 };
