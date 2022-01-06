@@ -2,14 +2,14 @@
 
 #include <vector>
 
-// An O(n^2) CS130B Dynamic Programming Implementation
+// An O(n^2) Time, O(n) Space CS130B Dynamic Programming Implementation
 // vector length is less than 2500
 // element can be from -10000 to 10000
 class Solution {
 public:
     int lengthOfLIS(std::vector<int>& nums) {
         short size = nums.size();
-        std::vector<short> subseqs; // holds all subseq lengths
+        std::vector<short> subseqs; // holds all subseq lengths, hence O(n) space
         
         for (short i = 0; i < size; ++i) {
             subseqs.push_back(1);
@@ -18,8 +18,8 @@ public:
                     subseqs[i] = subseqs[j] + 1;
                 }
                 // check if you can make a longer subseq
-                // by going back to all previously encountered elements
-                // this is why this algorithm is O(n^2)
+                // by inspecting all previously encountered elements and evaluated subsequence lengths
+                // this is why this algorithm is O(n^2) time
             }
         }
         
