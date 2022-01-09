@@ -3,10 +3,10 @@ My C++ Leetcode Solutions
 
 
 As of 9 January 2022, 
-- Easy: 61 of 537
-- Medium: 17 of 1133
-- Hard: 1 of 453
-- Completion Percentage: 3.7211%
+- Easy: 67 of 540
+- Medium: 19 of 1140
+- Hard: 1 of 456
+- Completion Percentage: 4.0730%
 
 have been completed and (most of it) is archived here. I have more accepted code on LeetCode than on this repository, but I don't post submissions on GitHub unless I have understood every line of code in the problem at some point.
 
