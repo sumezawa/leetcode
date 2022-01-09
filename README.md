@@ -2,13 +2,13 @@
 My C++ Leetcode Solutions
 
 
-As of 31 December 2021, 
+As of 9 January 2022, 
 - Easy: 61 of 537
 - Medium: 17 of 1133
 - Hard: 1 of 453
+- Completion Percentage: 3.7211%
 
-
-have been completed and archived here. I have more accepted code on LeetCode than on this repository, but I don't post submissions on GitHub unless I have understood every line of code in the problem at some point.
+have been completed and (most of it) is archived here. I have more accepted code on LeetCode than on this repository, but I don't post submissions on GitHub unless I have understood every line of code in the problem at some point.
 
 
 For example, in LeetCode Problem 0047, Permutations of Non-Unique Elements, I am still stuck on the if condition that determines a redundant permutation; therefore I have not yet uploaded the code here.
