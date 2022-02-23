@@ -1,23 +1,29 @@
 /* CASE 88: MERGE SORTED ARRAY */
 
-#include <utility> // std::swap
 #include <vector>
-
 
 class Solution {
 public:
     void merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n) {
-        while (m >= 0 && n >= 0) {
-            if (nums2[n - 1] > nums1[m - 1]) {
+        // start from the back
+        // size of nums1 is m + n, so we index m + n - 1.
+        // often m may end prematurely (m becomes 0), so the second whileloop accounts for that
+        while (m > 0 && n > 0) {
+            if (nums2[n - 1] >= nums1[m - 1]) {
                 nums1[m + n - 1] = nums2[n - 1];
                 --n;
             }
             else {
                 nums1[m + n - 1] = nums1[m - 1];
-                nums1[m - 1] = nums2[n - 1];
                 --m;
             }
         }
+        
+        while (n > 0) {
+            nums1[m + n - 1] = nums2[n - 1];
+            --n;
+        }
+        
         return;    
     }
 };
